@@ -66,8 +66,13 @@ export async function register(
 // Todo APIs
 export async function getTodos(): Promise<ApiResponse<Todo[]>> {
   const response = await fetch(`${API_BASE_URL}/todos`, {
+    method: "GET",
     credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
+
   if (!response.ok) throw new Error("Failed to fetch todos");
   return response.json();
 }
